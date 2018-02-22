@@ -1,9 +1,11 @@
 #include "A1001Display.h"
 
+#if defined(__AVR_ATtiny4313__)
 void A1001Display::initDisplay()
 {
   // USI - https://playground.arduino.cc/Code/USI-SPI
 
+  
   // set control pins as outputs and low
   DDRB |= (DATA | CLOCK);
   DDRD |= (STORE | MASTER_RESET);
@@ -11,6 +13,7 @@ void A1001Display::initDisplay()
   PORTD &= ~(STORE | MASTER_RESET);
   DIGIT_DDR |= (0b11111); // 4 Digits + DP
   turnOffDigits();
+  
 }
 
 void A1001Display::startupSequence()
@@ -216,3 +219,4 @@ void A1001Display::setSegments(const bool doublepoint, const uint8_t firstDigit,
   _digit[3] = forthDigit;
   _digit[4] = doublepoint;
 }
+#endif
