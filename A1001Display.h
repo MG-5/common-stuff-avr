@@ -1,6 +1,6 @@
 #pragma once
 
-#include "settings.h"
+#include "../settings.h"
 #include "timer0.h"
 #include <avr/io.h>
 #include <stdint.h>
@@ -33,7 +33,7 @@ const uint8_t digitToSegment[] = {
     0b01111001, // E
     0b01110001  // F
 };
-
+#if defined(__AVR_ATtiny4313__)
 class A1001Display
 {
 
@@ -75,3 +75,4 @@ private:
 
   void _sendByte(uint8_t shiftByte);
 };
+#endif
