@@ -559,6 +559,14 @@ void uart_putUInt32(uint32_t number)
   uart_puts(ultoa(number, s, 10));
 }
 
+void uart_clearBuffer()
+{
+  UART_TxHead = 0;
+  UART_TxTail = 0;
+  UART_RxHead = 0;
+  UART_RxTail = 0;
+}
+
 /*************************************************************************
 Function: uart_puts_p()
 Purpose:  transmit string from program memory to UART
@@ -759,6 +767,14 @@ void uart1_puts(const char *s)
     uart1_putc(*s++);
 
 } /* uart1_puts */
+
+void uart1_clearBuffer()
+{
+  UART1_TxHead = 0;
+  UART1_TxTail = 0;
+  UART1_RxHead = 0;
+  UART1_RxTail = 0;
+}
 
 /*************************************************************************
 Function: uart1_puts_p()
