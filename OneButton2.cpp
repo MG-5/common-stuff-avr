@@ -18,8 +18,7 @@ OneButton::OneButton(volatile uint8_t *pinAddr, uint8_t pin)
   _pinAddr = pinAddr;
   _pin = pin;
 
-  _pressTicks =
-      750; // number of millisec that have to pass by before a long button press is detected.
+  _pressTicks = 750; // number of millisec that have to pass by before a long button press is detected.
 
   state = 0;              // starting with state 0: waiting for button to be pressed
   _isLongPressed = false; // Keep track of long press state
@@ -34,10 +33,16 @@ OneButton::OneButton(volatile uint8_t *pinAddr, uint8_t pin)
 
 // explicitly set the number of millisec that have to pass by before a long button press is
 // detected.
-void OneButton::setPressTicks(int ticks) { _pressTicks = ticks; }
+void OneButton::setPressTicks(int ticks)
+{
+  _pressTicks = ticks;
+}
 
 // save function for click event
-void OneButton::attachClick(callbackFunction newFunction) { _clickFunc = newFunction; }
+void OneButton::attachClick(callbackFunction newFunction)
+{
+  _clickFunc = newFunction;
+}
 
 // save function for longPressStart event
 void OneButton::attachLongPressStart(callbackFunction newFunction)
@@ -58,7 +63,10 @@ void OneButton::attachDuringLongPress(callbackFunction newFunction)
 }
 
 // function to get the current long pressed state
-bool OneButton::isLongPressed() { return _isLongPressed; }
+bool OneButton::isLongPressed()
+{
+  return _isLongPressed;
+}
 
 void OneButton::tick()
 {
