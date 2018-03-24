@@ -5,7 +5,6 @@ void A1001Display::initDisplay()
 {
   // USI - https://playground.arduino.cc/Code/USI-SPI
 
-  
   // set control pins as outputs and low
   DDRB |= (DATA | CLOCK);
   DDRD |= (STORE | MASTER_RESET);
@@ -13,44 +12,18 @@ void A1001Display::initDisplay()
   PORTD &= ~(STORE | MASTER_RESET);
   DIGIT_DDR |= (0b11111); // 4 Digits + DP
   turnOffDigits();
-  
 }
 
 void A1001Display::startupSequence()
 {
-  uint8_t segment = 1;
   const uint8_t timePassed = 125;
-  const uint8_t sequence[7] = {66, 67, 99, 115, 123, 127, 255};
+  const uint8_t sequence[14] = {1, 2, 4, 8, 16, 32, 64, 66, 67, 99, 115, 123, 127, 255};
   uint32_t prevTime2 = millis();
   uint8_t i = 0;
 
-  while (i <= 6)
+  while (i < 14)
   {
-    setSegments(false, segment);
-
-    updateAllDigits();
-    wait_us(100);
-
-    turnOffDigits();
-    wait_us(200);
-
-    if (millis() - prevTime2 >= timePassed)
-    {
-      segment <<= 1;
-      i++;
-      prevTime2 = millis();
-    }
-  }
-
-  i = 0;
-  while (i <= 6)
-  {
-    segment = sequence[i];
-
-    if (i == 6)
-      setSegments(true, segment);
-    else
-      setSegments(false, segment);
+    setSegments((i == 13), sequence[i]);
 
     updateAllDigits();
     wait_us(100);
@@ -64,12 +37,12 @@ void A1001Display::startupSequence()
       prevTime2 = millis();
     }
   }
+
   wait_ms(100);
 
   // print running "HALLO"
   setSegments(false);
   const uint8_t hallo[] = {118, 119, 56, 56, 63};
-  // const uint8_t hallo[] = {64, 0, 0, 0, 0};
   const uint8_t halLength = 5;
   uint8_t idxHal = 0;
   bool running = true;
@@ -99,7 +72,7 @@ void A1001Display::startupSequence()
     for (uint8_t i = 0; i <= 3; i++)
     {
       update(i);
-     wait_us(100);
+      wait_us(100);
     }
     turnOffDigits();
   }
