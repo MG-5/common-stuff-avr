@@ -140,44 +140,6 @@ void A1001Display::_sendByte(uint8_t shiftByte)
     USICR = ((1 << USIWM0) | (1 << USICS1) | (1 << USICLK) | (1 << USITC));
 }
 
-void A1001Display::showScoreline(uint8_t left, uint8_t right)
-{
-  uint8_t players[2] = {left, right};
-  uint8_t score[4] = {0, 0, 0, 0};
-
-  for (uint8_t i = 0; i <= 1; i++)
-  {
-    if (players[i] > 9)
-    {
-      score[2 * i] = digitToSegment[players[i] / 10];
-      score[2 * i + 1] = digitToSegment[players[i] % 10];
-    }
-    else if (players[i] <= 9)
-    {
-      if (i == 1)
-      {
-        score[2 * i] = digitToSegment[players[i]];
-        score[2 * i + 1] = 0;
-      }
-      else
-      {
-        score[2 * i] = 0;
-        score[2 * i + 1] = digitToSegment[players[i]];
-      }
-    }
-  }
-  setSegments(true, score[0], score[1], score[2], score[3]);
-}
-
-void A1001Display::showServes(uint8_t serves, bool myself)
-{
-  uint8_t sign = 0;
-  if (!myself)
-    sign = 64; // Minusstrich
-
-  setSegments(true, 0, digitToSegment[0xA], sign, digitToSegment[serves]);
-}
-
 void A1001Display::setSegments(const bool doublepoint, const uint8_t digits[4])
 {
   setSegments(doublepoint, digits[0], digits[1], digits[2], digits[3]);

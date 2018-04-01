@@ -56,10 +56,6 @@ public:
 
   void turnOffDigits();
 
-  void showScoreline(uint8_t left, uint8_t right);
-
-  void showServes(uint8_t serves, bool myself);
-
   void startupSequence();
 
   void setSegments(const bool doublepoint, const uint8_t digits[4]);
