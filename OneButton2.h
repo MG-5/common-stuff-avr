@@ -49,10 +49,9 @@ public:
 
 private:
   volatile uint8_t *_pinAddr; // hardware pin address
-  uint8_t _pin;              // hardware pin number
+  uint8_t _pin;               // hardware pin number
 
-  uint16_t
-      _pressTicks; // number of ticks that have to pass by before a long button press is detected
+  uint16_t _pressTicks;              // number of ticks that have to pass by before a long button press is detected
   const uint8_t _debounceTicks = 50; // number of ticks for debounce times.
 
   bool _buttonReleased;
