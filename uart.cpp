@@ -549,14 +549,16 @@ void uart_putNewLine()
 
 void uart_putUInt16(uint16_t number)
 {
-  char s[1 + (number / 10)];
+  char *s = new char[1 + (number / 10)];
   uart_puts(utoa(number, s, 10));
+  delete[] s;
 }
 
 void uart_putUInt32(uint32_t number)
 {
-  char s[1 + (number / 10)];
+  char *s = new char[1 + (number / 10)];
   uart_puts(ultoa(number, s, 10));
+  delete[] s;
 }
 
 void uart_clearBuffer()
