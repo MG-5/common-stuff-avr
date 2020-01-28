@@ -7,18 +7,20 @@
 #include <avr/interrupt.h>
 #include <avr/io.h>
 
-#if defined(__AVR_ATmega328P__)
-#define TIMER0_CONTROLB TCCR0B
-#define TIMER0_REGISTER TCNT0
+#if defined(__AVR_ATmega328P__) || defined(__AVR_ATtiny4313__) || defined(__AVR_ATtiny1634__)
+#define TIMER0_OVERFLOW_ISR TIMER0_OVF_vect
+
+#elif defined(__AVR_ATtiny44A__)
+#define TIMER0_OVERFLOW_ISR TIM0_OVF_vect
+#else
+#error No device defined!
+#endif
+
+#if defined(__AVR_ATmega328P__) || defined(__AVR_ATtiny44A__)
 #define TIMER0_IMR TIMSK0
 
 #elif defined(__AVR_ATtiny4313__) || defined(__AVR_ATtiny1634__)
-#define TIMER0_CONTROLB TCCR0B
-#define TIMER0_REGISTER TCNT0
 #define TIMER0_IMR TIMSK
-
-#else
-#error No device defined!
 #endif
 
 #define clockCyclesPerMicrosecond() (F_CPU / 1000000L)
@@ -38,8 +40,8 @@ volatile uint16_t timer0_overflows = 0;
 
 void timer0_init()
 {
-  TIMER0_CONTROLB |= (1 << CS01) | (1 << CS00); // Prescaler 64
-  TIMER0_IMR |= (1 << TOIE0);                   // enable overflow interrupt
+  TCCR0B |= (1 << CS01) | (1 << CS00); // Prescaler 64
+  TIMER0_IMR |= (1 << TOIE0);          // enable overflow interrupt
 }
 
 uint32_t millis()
@@ -63,7 +65,7 @@ uint32_t micros()
 
   cli();
   m = timer0_overflows;
-  t = TIMER0_REGISTER;
+  t = TCNT0;
 
 #ifdef TIFR0
   if ((TIFR0 & (TOV0 << 1)) && (t < 255))
@@ -78,7 +80,7 @@ uint32_t micros()
   return ((m << 8) + t) * (64 / clockCyclesPerMicrosecond());
 }
 
-ISR(TIMER0_OVF_vect)
+ISR(TIMER0_OVERFLOW_ISR)
 {
   uint32_t m = timer0_millis;
   uint32_t f = timer0_fract;
