@@ -10,13 +10,13 @@
 #if defined(__AVR_ATmega328P__) || defined(__AVR_ATtiny4313__) || defined(__AVR_ATtiny1634__)
 #define TIMER0_OVERFLOW_ISR TIMER0_OVF_vect
 
-#elif defined(__AVR_ATtiny44A__)
+#elif defined(__AVR_ATtiny44A__) || defined(__AVR_ATtiny13A__)
 #define TIMER0_OVERFLOW_ISR TIM0_OVF_vect
 #else
 #error No device defined!
 #endif
 
-#if defined(__AVR_ATmega328P__) || defined(__AVR_ATtiny44A__)
+#if defined(__AVR_ATmega328P__) || defined(__AVR_ATtiny44A__) || defined(__AVR_ATtiny13A__)
 #define TIMER0_IMR TIMSK0
 
 #elif defined(__AVR_ATtiny4313__) || defined(__AVR_ATtiny1634__)
