@@ -40,62 +40,62 @@ volatile uint16_t timer0_overflows = 0;
 
 void timer0_init()
 {
-  TCCR0B |= (1 << CS01) | (1 << CS00); // Prescaler 64
-  TIMER0_IMR |= (1 << TOIE0);          // enable overflow interrupt
+    TCCR0B |= (1 << CS01) | (1 << CS00); // Prescaler 64
+    TIMER0_IMR |= (1 << TOIE0);          // enable overflow interrupt
 }
 
 uint32_t millis()
 {
-  unsigned long m;
-  uint8_t oldSREG = SREG;
+    unsigned long m;
+    uint8_t oldSREG = SREG;
 
-  // disable interrupts while we read timer0_millis or we might get an
-  // inconsistent value (e.g. in the middle of a write to timer0_millis)
-  cli();
-  m = timer0_millis;
-  SREG = oldSREG;
+    // disable interrupts while we read timer0_millis or we might get an
+    // inconsistent value (e.g. in the middle of a write to timer0_millis)
+    cli();
+    m = timer0_millis;
+    SREG = oldSREG;
 
-  return m;
+    return m;
 }
 
 uint32_t micros()
 {
-  unsigned long m;
-  uint8_t oldSREG = SREG, t;
+    unsigned long m;
+    uint8_t oldSREG = SREG, t;
 
-  cli();
-  m = timer0_overflows;
-  t = TCNT0;
+    cli();
+    m = timer0_overflows;
+    t = TCNT0;
 
 #ifdef TIFR0
-  if ((TIFR0 & (TOV0 << 1)) && (t < 255))
-    m++;
+    if ((TIFR0 & (TOV0 << 1)) && (t < 255))
+        m++;
 #else
-  if ((TIFR & (TOV0 << 1)) && (t < 255))
-    m++;
+    if ((TIFR & (TOV0 << 1)) && (t < 255))
+        m++;
 #endif
 
-  SREG = oldSREG;
+    SREG = oldSREG;
 
-  return ((m << 8) + t) * (64 / clockCyclesPerMicrosecond());
+    return ((m << 8) + t) * (64 / clockCyclesPerMicrosecond());
 }
 
 ISR(TIMER0_OVERFLOW_ISR)
 {
-  uint32_t m = timer0_millis;
-  uint32_t f = timer0_fract;
+    uint32_t m = timer0_millis;
+    uint32_t f = timer0_fract;
 
-  m += MILLIS_INC;
-  f += FRACT_INC;
+    m += MILLIS_INC;
+    f += FRACT_INC;
 
-  if (f >= FRACT_MAX)
-  {
-    f -= FRACT_MAX;
-    m += 1;
-  }
+    if (f >= FRACT_MAX)
+    {
+        f -= FRACT_MAX;
+        m += 1;
+    }
 
-  timer0_fract = f;
-  timer0_millis = m;
+    timer0_fract = f;
+    timer0_millis = m;
 
-  timer0_overflows++;
+    timer0_overflows++;
 }

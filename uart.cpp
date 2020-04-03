@@ -39,7 +39,7 @@ LICENSE:
 #error TX buffer size is not a power of 2
 #endif
 
-#if defined(__AVR_AT90S2313__) || defined(__AVR_AT90S4414__) || defined(__AVR_AT90S8515__) ||                          \
+#if defined(__AVR_AT90S2313__) || defined(__AVR_AT90S4414__) || defined(__AVR_AT90S8515__) ||      \
     defined(__AVR_AT90S4434__) || defined(__AVR_AT90S8535__) || defined(__AVR_ATmega103__)
 /* old AVR classic or ATmega103 with one UART */
 #define UART0_RECEIVE_INTERRUPT UART_RX_vect
@@ -83,8 +83,8 @@ LICENSE:
 #define UART0_BIT_TXEN TXEN
 #define UART0_BIT_UCSZ0 UCSZ0
 #define UART0_BIT_UCSZ1 UCSZ1
-#elif defined(__AVR_ATmega8__) || defined(__AVR_ATmega8A__) || defined(__AVR_ATmega16__) ||                            \
-    defined(__AVR_ATmega16A__) || defined(__AVR_ATmega32__) || defined(__AVR_ATmega32A__) ||                           \
+#elif defined(__AVR_ATmega8__) || defined(__AVR_ATmega8A__) || defined(__AVR_ATmega16__) ||        \
+    defined(__AVR_ATmega16A__) || defined(__AVR_ATmega32__) || defined(__AVR_ATmega32A__) ||       \
     defined(__AVR_ATmega323__)
 /* ATmega with one USART */
 #define UART0_RECEIVE_INTERRUPT USART_RXC_vect
@@ -189,12 +189,12 @@ LICENSE:
 #define UART0_BIT_TXEN TXEN
 #define UART0_BIT_UCSZ0 UCSZ0
 #define UART0_BIT_UCSZ1 UCSZ1
-#elif defined(__AVR_ATmega48__) || defined(__AVR_ATmega48A__) || defined(__AVR_ATmega48P__) ||                         \
-    defined(__AVR_ATmega48PA__) || defined(__AVR_ATmega48PB__) || defined(__AVR_ATmega88__) ||                         \
-    defined(__AVR_ATmega88A__) || defined(__AVR_ATmega88P__) || defined(__AVR_ATmega88PA__) ||                         \
-    defined(__AVR_ATmega88PB__) || defined(__AVR_ATmega168__) || defined(__AVR_ATmega168A__) ||                        \
-    defined(__AVR_ATmega168P__) || defined(__AVR_ATmega168PA__) || defined(__AVR_ATmega168PB__) ||                     \
-    defined(__AVR_ATmega328__) || defined(__AVR_ATmega328P__) || defined(__AVR_ATmega3250__) ||                        \
+#elif defined(__AVR_ATmega48__) || defined(__AVR_ATmega48A__) || defined(__AVR_ATmega48P__) ||     \
+    defined(__AVR_ATmega48PA__) || defined(__AVR_ATmega48PB__) || defined(__AVR_ATmega88__) ||     \
+    defined(__AVR_ATmega88A__) || defined(__AVR_ATmega88P__) || defined(__AVR_ATmega88PA__) ||     \
+    defined(__AVR_ATmega88PB__) || defined(__AVR_ATmega168__) || defined(__AVR_ATmega168A__) ||    \
+    defined(__AVR_ATmega168P__) || defined(__AVR_ATmega168PA__) || defined(__AVR_ATmega168PB__) || \
+    defined(__AVR_ATmega328__) || defined(__AVR_ATmega328P__) || defined(__AVR_ATmega3250__) ||    \
     defined(__AVR_ATmega3290__) || defined(__AVR_ATmega6450__) || defined(__AVR_ATmega6490__)
 /* ATmega with one USART */
 #define UART0_RECEIVE_INTERRUPT USART_RX_vect
@@ -233,16 +233,17 @@ LICENSE:
 #define UART0_BIT_UCSZ1 UCSZ1
 #define UART0_BIT_PARITY0 UPM0
 #define UART0_BIT_PARITY1 UPM1
-#elif defined(__AVR_ATmega329__) || defined(__AVR_ATmega649__) || defined(__AVR_ATmega3290__) ||                       \
-    defined(__AVR_ATmega6490__) || defined(__AVR_ATmega169A__) || defined(__AVR_ATmega169PA__) ||                      \
-    defined(__AVR_ATmega329A__) || defined(__AVR_ATmega329PA__) || defined(__AVR_ATmega3290A__) ||                     \
-    defined(__AVR_ATmega3290PA__) || defined(__AVR_ATmega649A__) || defined(__AVR_ATmega649P__) ||                     \
-    defined(__AVR_ATmega6490A__) || defined(__AVR_ATmega6490P__) || defined(__AVR_ATmega165__) ||                      \
-    defined(__AVR_ATmega325__) || defined(__AVR_ATmega645__) || defined(__AVR_ATmega3250__) ||                         \
-    defined(__AVR_ATmega6450__) || defined(__AVR_ATmega165A__) || defined(__AVR_ATmega165PA__) ||                      \
-    defined(__AVR_ATmega325A__) || defined(__AVR_ATmega325PA__) || defined(__AVR_ATmega3250A__) ||                     \
-    defined(__AVR_ATmega3250PA__) || defined(__AVR_ATmega645A__) || defined(__AVR_ATmega645PA__) ||                    \
-    defined(__AVR_ATmega6450A__) || defined(__AVR_ATmega6450PA__) || defined(__AVR_ATmega644__)
+#elif defined(__AVR_ATmega329__) || defined(__AVR_ATmega649__) || defined(__AVR_ATmega3290__) ||   \
+    defined(__AVR_ATmega6490__) || defined(__AVR_ATmega169A__) || defined(__AVR_ATmega169PA__) ||  \
+    defined(__AVR_ATmega329A__) || defined(__AVR_ATmega329PA__) || defined(__AVR_ATmega3290A__) || \
+    defined(__AVR_ATmega3290PA__) || defined(__AVR_ATmega649A__) || defined(__AVR_ATmega649P__) || \
+    defined(__AVR_ATmega6490A__) || defined(__AVR_ATmega6490P__) || defined(__AVR_ATmega165__) ||  \
+    defined(__AVR_ATmega325__) || defined(__AVR_ATmega645__) || defined(__AVR_ATmega3250__) ||     \
+    defined(__AVR_ATmega6450__) || defined(__AVR_ATmega165A__) || defined(__AVR_ATmega165PA__) ||  \
+    defined(__AVR_ATmega325A__) || defined(__AVR_ATmega325PA__) || defined(__AVR_ATmega3250A__) || \
+    defined(__AVR_ATmega3250PA__) || defined(__AVR_ATmega645A__) ||                                \
+    defined(__AVR_ATmega645PA__) || defined(__AVR_ATmega6450A__) ||                                \
+    defined(__AVR_ATmega6450PA__) || defined(__AVR_ATmega644__)
 /* ATmega with one USART */
 #define UART0_RECEIVE_INTERRUPT USART0_RX_vect
 #define UART0_TRANSMIT_INTERRUPT USART0_UDRE_vect
@@ -259,12 +260,12 @@ LICENSE:
 #define UART0_BIT_TXEN TXEN0
 #define UART0_BIT_UCSZ0 UCSZ00
 #define UART0_BIT_UCSZ1 UCSZ01
-#elif defined(__AVR_ATmega64__) || defined(__AVR_ATmega128__) || defined(__AVR_ATmega128A__) ||                        \
-    defined(__AVR_ATmega640__) || defined(__AVR_ATmega1280__) || defined(__AVR_ATmega1281__) ||                        \
-    defined(__AVR_ATmega2560__) || defined(__AVR_ATmega2561__) || defined(__AVR_ATmega164P__) ||                       \
-    defined(__AVR_ATmega324P__) || defined(__AVR_ATmega644P__) || defined(__AVR_ATmega164A__) ||                       \
-    defined(__AVR_ATmega164PA__) || defined(__AVR_ATmega324A__) || defined(__AVR_ATmega324PA__) ||                     \
-    defined(__AVR_ATmega644A__) || defined(__AVR_ATmega644PA__) || defined(__AVR_ATmega1284__) ||                      \
+#elif defined(__AVR_ATmega64__) || defined(__AVR_ATmega128__) || defined(__AVR_ATmega128A__) ||    \
+    defined(__AVR_ATmega640__) || defined(__AVR_ATmega1280__) || defined(__AVR_ATmega1281__) ||    \
+    defined(__AVR_ATmega2560__) || defined(__AVR_ATmega2561__) || defined(__AVR_ATmega164P__) ||   \
+    defined(__AVR_ATmega324P__) || defined(__AVR_ATmega644P__) || defined(__AVR_ATmega164A__) ||   \
+    defined(__AVR_ATmega164PA__) || defined(__AVR_ATmega324A__) || defined(__AVR_ATmega324PA__) || \
+    defined(__AVR_ATmega644A__) || defined(__AVR_ATmega644PA__) || defined(__AVR_ATmega1284__) ||  \
     defined(__AVR_ATmega1284P__) || defined(__AVR_ATtiny1634__)
 /* ATmega with two USART */
 #define ATMEGA_USART1
@@ -304,9 +305,9 @@ LICENSE:
 #define UART1_BIT_PARITY0 UPM10
 #define UART1_BIT_PARITY1 UPM11
 
-#elif defined(__AVR_ATmega8U2__) || defined(__AVR_ATmega16U2__) || defined(__AVR_ATmega32U2__) ||                      \
-    defined(__AVR_ATmega16U4__) || defined(__AVR_ATmega32U4__) || defined(__AVR_AT90USB82__) ||                        \
-    defined(__AVR_AT90USB162__) || defined(__AVR_AT90USB646__) || defined(__AVR_AT90USB1286__) ||                      \
+#elif defined(__AVR_ATmega8U2__) || defined(__AVR_ATmega16U2__) || defined(__AVR_ATmega32U2__) ||  \
+    defined(__AVR_ATmega16U4__) || defined(__AVR_ATmega32U4__) || defined(__AVR_AT90USB82__) ||    \
+    defined(__AVR_AT90USB162__) || defined(__AVR_AT90USB646__) || defined(__AVR_AT90USB1286__) ||  \
     defined(__AVR_AT90USB647__) || defined(__AVR_AT90USB1287__)
 #define UART0_RECEIVE_INTERRUPT USART1_RX_vect
 #define UART0_TRANSMIT_INTERRUPT USART1_UDRE_vect
@@ -354,42 +355,42 @@ Function: UART Receive Complete interrupt
 Purpose:  called when the UART has received a character
 **************************************************************************/
 {
-  unsigned char tmphead;
-  unsigned char data;
-  unsigned char usr;
-  unsigned char lastRxError;
+    unsigned char tmphead;
+    unsigned char data;
+    unsigned char usr;
+    unsigned char lastRxError;
 
-  /* read UART status register and UART data register */
-  usr = UART0_STATUS;
-  data = UART0_DATA;
+    /* read UART status register and UART data register */
+    usr = UART0_STATUS;
+    data = UART0_DATA;
 
-  /* get FEn (Frame Error) DORn (Data OverRun) UPEn (USART Parity Error) bits */
+    /* get FEn (Frame Error) DORn (Data OverRun) UPEn (USART Parity Error) bits */
 #if defined(FE) && defined(DOR) && defined(UPE)
-  lastRxError = usr & ((1 << FE) | (1 << DOR) | (1 << UPE));
+    lastRxError = usr & ((1 << FE) | (1 << DOR) | (1 << UPE));
 #elif defined(FE0) && defined(DOR0) && defined(UPE0)
-  lastRxError = usr & ((1 << FE0) | (1 << DOR0) | (1 << UPE0));
+    lastRxError = usr & ((1 << FE0) | (1 << DOR0) | (1 << UPE0));
 #elif defined(FE1) && defined(DOR1) && defined(UPE1)
-  lastRxError = usr & ((1 << FE1) | (1 << DOR1) | (1 << UPE1));
+    lastRxError = usr & ((1 << FE1) | (1 << DOR1) | (1 << UPE1));
 #elif defined(FE) && defined(DOR)
-  lastRxError = usr & ((1 << FE) | (1 << DOR));
+    lastRxError = usr & ((1 << FE) | (1 << DOR));
 #endif
 
-  /* calculate buffer index */
-  tmphead = (UART_RxHead + 1) & UART_RX_BUFFER_MASK;
+    /* calculate buffer index */
+    tmphead = (UART_RxHead + 1) & UART_RX_BUFFER_MASK;
 
-  if (tmphead == UART_RxTail)
-  {
-    /* error: receive buffer overflow */
-    lastRxError = UART_BUFFER_OVERFLOW >> 8;
-  }
-  else
-  {
-    /* store new index */
-    UART_RxHead = tmphead;
-    /* store received data in buffer */
-    UART_RxBuf[tmphead] = data;
-  }
-  UART_LastRxError |= lastRxError;
+    if (tmphead == UART_RxTail)
+    {
+        /* error: receive buffer overflow */
+        lastRxError = UART_BUFFER_OVERFLOW >> 8;
+    }
+    else
+    {
+        /* store new index */
+        UART_RxHead = tmphead;
+        /* store received data in buffer */
+        UART_RxBuf[tmphead] = data;
+    }
+    UART_LastRxError |= lastRxError;
 }
 
 ISR(UART0_TRANSMIT_INTERRUPT)
@@ -398,21 +399,21 @@ Function: UART Data Register Empty interrupt
 Purpose:  called when the UART is ready to transmit the next byte
 **************************************************************************/
 {
-  unsigned char tmptail;
+    unsigned char tmptail;
 
-  if (UART_TxHead != UART_TxTail)
-  {
-    /* calculate and store new buffer index */
-    tmptail = (UART_TxTail + 1) & UART_TX_BUFFER_MASK;
-    UART_TxTail = tmptail;
-    /* get one byte from buffer and write it to UART */
-    UART0_DATA = UART_TxBuf[tmptail]; /* start transmission */
-  }
-  else
-  {
-    /* tx buffer empty, disable UDRE interrupt */
-    UART0_CONTROL &= ~(1 << UART0_UDRIE);
-  }
+    if (UART_TxHead != UART_TxTail)
+    {
+        /* calculate and store new buffer index */
+        tmptail = (UART_TxTail + 1) & UART_TX_BUFFER_MASK;
+        UART_TxTail = tmptail;
+        /* get one byte from buffer and write it to UART */
+        UART0_DATA = UART_TxBuf[tmptail]; /* start transmission */
+    }
+    else
+    {
+        /* tx buffer empty, disable UDRE interrupt */
+        UART0_CONTROL &= ~(1 << UART0_UDRIE);
+    }
 }
 
 /*************************************************************************
@@ -423,10 +424,10 @@ Returns:  none
 **************************************************************************/
 void uart_init(unsigned int baudrate)
 {
-  UART_TxHead = 0;
-  UART_TxTail = 0;
-  UART_RxHead = 0;
-  UART_RxTail = 0;
+    UART_TxHead = 0;
+    UART_TxTail = 0;
+    UART_RxHead = 0;
+    UART_RxTail = 0;
 
 #ifdef UART_TEST
 #ifndef UART0_BIT_U2X
@@ -445,27 +446,28 @@ void uart_init(unsigned int baudrate)
 #endif
 #endif
 
-  /* Set baud rate */
-  if (baudrate & 0x8000)
-  {
+    /* Set baud rate */
+    if (baudrate & 0x8000)
+    {
 #if UART0_BIT_U2X
-    UART0_STATUS = (1 << UART0_BIT_U2X); // Enable 2x speed
+        UART0_STATUS = (1 << UART0_BIT_U2X); // Enable 2x speed
 #endif
-  }
+    }
 #if defined(UART0_UBRRH)
-  UART0_UBRRH = (unsigned char)((baudrate >> 8) & 0x80);
+    UART0_UBRRH = (unsigned char)((baudrate >> 8) & 0x80);
 #endif
-  UART0_UBRRL = (unsigned char)(baudrate & 0x00FF);
+    UART0_UBRRL = (unsigned char)(baudrate & 0x00FF);
 
-  /* Enable USART receiver and transmitter and receive complete interrupt */
-  UART0_CONTROL = (1 << UART0_BIT_RXCIE) | (1 << UART0_BIT_RXEN) | (1 << UART0_BIT_TXEN);
+    /* Enable USART receiver and transmitter and receive complete interrupt */
+    UART0_CONTROL = (1 << UART0_BIT_RXCIE) | (1 << UART0_BIT_RXEN) | (1 << UART0_BIT_TXEN);
 
 /* Set frame format: asynchronous, 8data, even parity, 1stop bit */
 #ifdef UART0_CONTROLC
 #ifdef UART0_BIT_URSEL
-  UART0_CONTROLC = (1 << UART0_BIT_URSEL) | (1 << UART0_BIT_UCSZ1) | (1 << UART0_BIT_UCSZ0) | (1 << UART0_BIT_PARITY1);
+    UART0_CONTROLC = (1 << UART0_BIT_URSEL) | (1 << UART0_BIT_UCSZ1) | (1 << UART0_BIT_UCSZ0) |
+                     (1 << UART0_BIT_PARITY1);
 #else
-  UART0_CONTROLC = (1 << UART0_BIT_UCSZ1) | (1 << UART0_BIT_UCSZ0) | (1 << UART0_BIT_PARITY1);
+    UART0_CONTROLC = (1 << UART0_BIT_UCSZ1) | (1 << UART0_BIT_UCSZ0) | (1 << UART0_BIT_PARITY1);
 #endif
 #endif
 
@@ -479,27 +481,27 @@ Returns:  lower byte:  received byte from ringbuffer
 **************************************************************************/
 unsigned int uart_getc(void)
 {
-  unsigned char tmptail;
-  unsigned char data;
-  unsigned char lastRxError;
+    unsigned char tmptail;
+    unsigned char data;
+    unsigned char lastRxError;
 
-  if (UART_RxHead == UART_RxTail)
-  {
-    return UART_NO_DATA; /* no data available */
-  }
+    if (UART_RxHead == UART_RxTail)
+    {
+        return UART_NO_DATA; /* no data available */
+    }
 
-  /* calculate buffer index */
-  tmptail = (UART_RxTail + 1) & UART_RX_BUFFER_MASK;
+    /* calculate buffer index */
+    tmptail = (UART_RxTail + 1) & UART_RX_BUFFER_MASK;
 
-  /* get data from receive buffer */
-  data = UART_RxBuf[tmptail];
-  lastRxError = UART_LastRxError;
+    /* get data from receive buffer */
+    data = UART_RxBuf[tmptail];
+    lastRxError = UART_LastRxError;
 
-  /* store buffer index */
-  UART_RxTail = tmptail;
+    /* store buffer index */
+    UART_RxTail = tmptail;
 
-  UART_LastRxError = 0;
-  return (lastRxError << 8) + data;
+    UART_LastRxError = 0;
+    return (lastRxError << 8) + data;
 
 } /* uart_getc */
 
@@ -511,20 +513,20 @@ Returns:  none
 **************************************************************************/
 void uart_putc(unsigned char data)
 {
-  unsigned char tmphead;
+    unsigned char tmphead;
 
-  tmphead = (UART_TxHead + 1) & UART_TX_BUFFER_MASK;
+    tmphead = (UART_TxHead + 1) & UART_TX_BUFFER_MASK;
 
-  while (tmphead == UART_TxTail)
-  {
-    ; /* wait for free space in buffer */
-  }
+    while (tmphead == UART_TxTail)
+    {
+        ; /* wait for free space in buffer */
+    }
 
-  UART_TxBuf[tmphead] = data;
-  UART_TxHead = tmphead;
+    UART_TxBuf[tmphead] = data;
+    UART_TxHead = tmphead;
 
-  /* enable UDRE interrupt */
-  UART0_CONTROL |= (1 << UART0_UDRIE);
+    /* enable UDRE interrupt */
+    UART0_CONTROL |= (1 << UART0_UDRIE);
 
 } /* uart_putc */
 
@@ -536,37 +538,37 @@ Returns:  none
 **************************************************************************/
 void uart_puts(const char *s)
 {
-  while (*s)
-    uart_putc(*s++);
+    while (*s)
+        uart_putc(*s++);
 
 } /* uart_puts */
 
 void uart_putNewLine()
 {
-  uart_putc(13);
-  uart_putc(10);
+    uart_putc(13);
+    uart_putc(10);
 }
 
 void uart_putUInt16(uint16_t number)
 {
-  char *s = new char[1 + (number / 10)];
-  uart_puts(utoa(number, s, 10));
-  delete[] s;
+    char *s = new char[1 + (number / 10)];
+    uart_puts(utoa(number, s, 10));
+    delete[] s;
 }
 
 void uart_putUInt32(uint32_t number)
 {
-  char *s = new char[1 + (number / 10)];
-  uart_puts(ultoa(number, s, 10));
-  delete[] s;
+    char *s = new char[1 + (number / 10)];
+    uart_puts(ultoa(number, s, 10));
+    delete[] s;
 }
 
 void uart_clearBuffer()
 {
-  UART_TxHead = 0;
-  UART_TxTail = 0;
-  UART_RxHead = 0;
-  UART_RxTail = 0;
+    UART_TxHead = 0;
+    UART_TxTail = 0;
+    UART_RxHead = 0;
+    UART_RxTail = 0;
 }
 
 /*************************************************************************
@@ -577,10 +579,10 @@ Returns:  none
 **************************************************************************/
 void uart_puts_p(const char *progmem_s)
 {
-  register char c;
+    register char c;
 
-  while ((c = pgm_read_byte(progmem_s++)))
-    uart_putc(c);
+    while ((c = pgm_read_byte(progmem_s++)))
+        uart_putc(c);
 
 } /* uart_puts_p */
 
@@ -595,34 +597,34 @@ Function: UART1 Receive Complete interrupt
 Purpose:  called when the UART1 has received a character
 **************************************************************************/
 {
-  unsigned char tmphead;
-  unsigned char data;
-  unsigned char usr;
-  unsigned char lastRxError;
+    unsigned char tmphead;
+    unsigned char data;
+    unsigned char usr;
+    unsigned char lastRxError;
 
-  /* read UART status register and UART data register */
-  usr = UART1_STATUS;
-  data = UART1_DATA;
+    /* read UART status register and UART data register */
+    usr = UART1_STATUS;
+    data = UART1_DATA;
 
-  /* get FEn (Frame Error) DORn (Data OverRun) UPEn (USART Parity Error) bits */
-  lastRxError = usr & ((1 << FE1) | (1 << DOR1) | (1 << UPE1));
+    /* get FEn (Frame Error) DORn (Data OverRun) UPEn (USART Parity Error) bits */
+    lastRxError = usr & ((1 << FE1) | (1 << DOR1) | (1 << UPE1));
 
-  /* calculate buffer index */
-  tmphead = (UART1_RxHead + 1) & UART_RX_BUFFER_MASK;
+    /* calculate buffer index */
+    tmphead = (UART1_RxHead + 1) & UART_RX_BUFFER_MASK;
 
-  if (tmphead == UART1_RxTail)
-  {
-    /* error: receive buffer overflow */
-    lastRxError = UART_BUFFER_OVERFLOW >> 8;
-  }
-  else
-  {
-    /* store new index */
-    UART1_RxHead = tmphead;
-    /* store received data in buffer */
-    UART1_RxBuf[tmphead] = data;
-  }
-  UART1_LastRxError |= lastRxError;
+    if (tmphead == UART1_RxTail)
+    {
+        /* error: receive buffer overflow */
+        lastRxError = UART_BUFFER_OVERFLOW >> 8;
+    }
+    else
+    {
+        /* store new index */
+        UART1_RxHead = tmphead;
+        /* store received data in buffer */
+        UART1_RxBuf[tmphead] = data;
+    }
+    UART1_LastRxError |= lastRxError;
 }
 
 ISR(UART1_TRANSMIT_INTERRUPT)
@@ -631,21 +633,21 @@ Function: UART1 Data Register Empty interrupt
 Purpose:  called when the UART1 is ready to transmit the next byte
 **************************************************************************/
 {
-  unsigned char tmptail;
+    unsigned char tmptail;
 
-  if (UART1_TxHead != UART1_TxTail)
-  {
-    /* calculate and store new buffer index */
-    tmptail = (UART1_TxTail + 1) & UART_TX_BUFFER_MASK;
-    UART1_TxTail = tmptail;
-    /* get one byte from buffer and write it to UART */
-    UART1_DATA = UART1_TxBuf[tmptail]; /* start transmission */
-  }
-  else
-  {
-    /* tx buffer empty, disable UDRE interrupt */
-    UART1_CONTROL &= ~(1 << UART1_UDRIE);
-  }
+    if (UART1_TxHead != UART1_TxTail)
+    {
+        /* calculate and store new buffer index */
+        tmptail = (UART1_TxTail + 1) & UART_TX_BUFFER_MASK;
+        UART1_TxTail = tmptail;
+        /* get one byte from buffer and write it to UART */
+        UART1_DATA = UART1_TxBuf[tmptail]; /* start transmission */
+    }
+    else
+    {
+        /* tx buffer empty, disable UDRE interrupt */
+        UART1_CONTROL &= ~(1 << UART1_UDRIE);
+    }
 }
 
 /*************************************************************************
@@ -656,10 +658,10 @@ Returns:  none
 **************************************************************************/
 void uart1_init(unsigned int baudrate)
 {
-  UART1_TxHead = 0;
-  UART1_TxTail = 0;
-  UART1_RxHead = 0;
-  UART1_RxTail = 0;
+    UART1_TxHead = 0;
+    UART1_TxTail = 0;
+    UART1_RxHead = 0;
+    UART1_RxTail = 0;
 
 #ifdef UART_TEST
 #ifndef UART1_BIT_U2X
@@ -678,24 +680,25 @@ void uart1_init(unsigned int baudrate)
 #endif
 #endif
 
-  /* Set baud rate */
-  if (baudrate & 0x8000)
-  {
+    /* Set baud rate */
+    if (baudrate & 0x8000)
+    {
 #if UART1_BIT_U2X
-    UART1_STATUS = (1 << UART1_BIT_U2X); // Enable 2x speed
+        UART1_STATUS = (1 << UART1_BIT_U2X); // Enable 2x speed
 #endif
-  }
-  UART1_UBRRH = (unsigned char)((baudrate >> 8) & 0x80);
-  UART1_UBRRL = (unsigned char)baudrate;
+    }
+    UART1_UBRRH = (unsigned char)((baudrate >> 8) & 0x80);
+    UART1_UBRRL = (unsigned char)baudrate;
 
-  /* Enable USART receiver and transmitter and receive complete interrupt */
-  UART1_CONTROL = (1 << UART1_BIT_RXCIE) | (1 << UART1_BIT_RXEN) | (1 << UART1_BIT_TXEN);
+    /* Enable USART receiver and transmitter and receive complete interrupt */
+    UART1_CONTROL = (1 << UART1_BIT_RXCIE) | (1 << UART1_BIT_RXEN) | (1 << UART1_BIT_TXEN);
 
 /* Set frame format: asynchronous, 8data, even parity, 1stop bit */
 #ifdef UART1_BIT_URSEL
-  UART1_CONTROLC = (1 << UART1_BIT_URSEL) | (1 << UART1_BIT_UCSZ1) | (1 << UART1_BIT_UCSZ0) | (1 << UART1_BIT_PARITY1);
+    UART1_CONTROLC = (1 << UART1_BIT_URSEL) | (1 << UART1_BIT_UCSZ1) | (1 << UART1_BIT_UCSZ0) |
+                     (1 << UART1_BIT_PARITY1);
 #else
-  UART1_CONTROLC = (1 << UART1_BIT_UCSZ1) | (1 << UART1_BIT_UCSZ0) | (1 << UART1_BIT_PARITY1);
+    UART1_CONTROLC = (1 << UART1_BIT_UCSZ1) | (1 << UART1_BIT_UCSZ0) | (1 << UART1_BIT_PARITY1);
 #endif
 
 } /* uart_init */
@@ -708,27 +711,27 @@ Returns:  lower byte:  received byte from ringbuffer
 **************************************************************************/
 unsigned int uart1_getc(void)
 {
-  unsigned char tmptail;
-  unsigned int data;
-  unsigned char lastRxError;
+    unsigned char tmptail;
+    unsigned int data;
+    unsigned char lastRxError;
 
-  if (UART1_RxHead == UART1_RxTail)
-  {
-    return UART_NO_DATA; /* no data available */
-  }
+    if (UART1_RxHead == UART1_RxTail)
+    {
+        return UART_NO_DATA; /* no data available */
+    }
 
-  /* calculate buffer index */
-  tmptail = (UART1_RxTail + 1) & UART_RX_BUFFER_MASK;
+    /* calculate buffer index */
+    tmptail = (UART1_RxTail + 1) & UART_RX_BUFFER_MASK;
 
-  /* get data from receive buffer */
-  data = UART1_RxBuf[tmptail];
-  lastRxError = UART1_LastRxError;
+    /* get data from receive buffer */
+    data = UART1_RxBuf[tmptail];
+    lastRxError = UART1_LastRxError;
 
-  /* store buffer index */
-  UART1_RxTail = tmptail;
+    /* store buffer index */
+    UART1_RxTail = tmptail;
 
-  UART1_LastRxError = 0;
-  return (lastRxError << 8) + data;
+    UART1_LastRxError = 0;
+    return (lastRxError << 8) + data;
 
 } /* uart1_getc */
 
@@ -740,20 +743,20 @@ Returns:  none
 **************************************************************************/
 void uart1_putc(unsigned char data)
 {
-  unsigned char tmphead;
+    unsigned char tmphead;
 
-  tmphead = (UART1_TxHead + 1) & UART_TX_BUFFER_MASK;
+    tmphead = (UART1_TxHead + 1) & UART_TX_BUFFER_MASK;
 
-  while (tmphead == UART1_TxTail)
-  {
-    ; /* wait for free space in buffer */
-  }
+    while (tmphead == UART1_TxTail)
+    {
+        ; /* wait for free space in buffer */
+    }
 
-  UART1_TxBuf[tmphead] = data;
-  UART1_TxHead = tmphead;
+    UART1_TxBuf[tmphead] = data;
+    UART1_TxHead = tmphead;
 
-  /* enable UDRE interrupt */
-  UART1_CONTROL |= (1 << UART1_UDRIE);
+    /* enable UDRE interrupt */
+    UART1_CONTROL |= (1 << UART1_UDRIE);
 
 } /* uart1_putc */
 
@@ -765,17 +768,17 @@ Returns:  none
 **************************************************************************/
 void uart1_puts(const char *s)
 {
-  while (*s)
-    uart1_putc(*s++);
+    while (*s)
+        uart1_putc(*s++);
 
 } /* uart1_puts */
 
 void uart1_clearBuffer()
 {
-  UART1_TxHead = 0;
-  UART1_TxTail = 0;
-  UART1_RxHead = 0;
-  UART1_RxTail = 0;
+    UART1_TxHead = 0;
+    UART1_TxTail = 0;
+    UART1_RxHead = 0;
+    UART1_RxTail = 0;
 }
 
 /*************************************************************************
@@ -786,10 +789,10 @@ Returns:  none
 **************************************************************************/
 void uart1_puts_p(const char *progmem_s)
 {
-  register char c;
+    register char c;
 
-  while ((c = pgm_read_byte(progmem_s++)))
-    uart1_putc(c);
+    while ((c = pgm_read_byte(progmem_s++)))
+        uart1_putc(c);
 
 } /* uart1_puts_p */
 
